@@ -12,4 +12,4 @@ $records =
     ];
 
 
-var_dump(collect($records)->push('dfddf'));
+var_dump(make_collect($records)->push('dfddf'));
