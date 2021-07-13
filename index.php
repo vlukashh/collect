@@ -11,4 +11,4 @@ $records =
     ];
 
 
-var_dump(collection($records)->push('dfddf'));
+var_dump(collection($records)->values());

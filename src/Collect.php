@@ -13,12 +13,12 @@ class Collect
 
     public function keys(): Collect
     {
-        return collection(array_keys($this->array));
+        return new self(array_keys($this->array));
     }
 
     public function values(): Collect
     {
-        return collection(array_values($this->array));
+        return new self(array_values($this->array));
     }
 
     public function get($key = null)
@@ -39,7 +39,7 @@ class Collect
         if (gettype($attrs[0]) === 'array') {
             $attrs = $attrs[0];
         }
-        return collection(array_intersect_key($this->array, array_flip($attrs)));
+        return new self(array_intersect_key($this->array, array_flip($attrs)));
     }
 
     public function first()
@@ -61,19 +61,19 @@ class Collect
     {
         $tmp = array_keys(array_column($this->array, $key), $value);
 
-        return collection($tmp)->map(function ($idx) {
+        return (new self($tmp))->map(function ($idx) {
             return $this->array[$idx];
         });
     }
 
     public function map(callable $callback): Collect
     {
-        return collection(array_map($callback, $this->array));
+        return new self(array_map($callback, $this->array));
     }
 
     public function filter(callable $callback): Collect
     {
-        return collection(array_filter($this->array, $callback));
+        return new self(array_filter($this->array, $callback));
     }
 
     public function each(callable $callback): Collect
@@ -87,7 +87,7 @@ class Collect
     public function push($value, $key = null): Collect
     {
         if (gettype($value) === 'array') {
-            $value = collection($value);
+            $value = new self($value);
         }
         if ($key) {
             $this->array[$key] = $value;
