@@ -1,4 +1,7 @@
 <?php
+
+use function Collect\collect;
+
 require_once 'vendor/autoload.php';
 
 $records =

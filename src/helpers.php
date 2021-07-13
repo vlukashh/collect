@@ -1,8 +1,8 @@
 <?php
 
-use Collect\Collect;
+namespace Collect;
 
-function collect(array $array=[])
+function collect(array $array = []): Collect
 {
     return new Collect($array);
 }
