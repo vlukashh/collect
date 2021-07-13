@@ -1,6 +1,5 @@
 <?php
-
-use function Collect\collect;
+namespace Collect;
 
 require_once 'vendor/autoload.php';
 
@@ -12,4 +11,4 @@ $records =
     ];
 
 
-var_dump(collect($records)->push('dfddf'));
+var_dump(collection($records)->push('dfddf'));
