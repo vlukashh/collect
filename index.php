@@ -1,4 +1,5 @@
 <?php
+
 namespace Collect;
 
 require_once 'vendor/autoload.php';
@@ -11,4 +12,6 @@ $records =
     ];
 
 
-var_dump(collection($records)->values());
+collection($records)->each(function ($value, $key, $arg) {
+var_dump($value,$key,$arg);
+}, 1000);

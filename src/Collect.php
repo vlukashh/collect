@@ -71,15 +71,16 @@ class Collect
         return new self(array_map($callback, $this->array));
     }
 
+    //3
     public function filter(callable $callback): Collect
     {
         return new self(array_filter($this->array, $callback));
     }
 
-    public function each(callable $callback): Collect
+    public function each(callable $callback, ...$args): Collect
     {
         foreach ($this->array as $key => $item) {
-            $callback($item, $key);
+            $callback($item, $key, ...$args);
         }
         return $this;
     }
